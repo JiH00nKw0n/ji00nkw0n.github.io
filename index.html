@@ -3,428 +3,489 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jihoon Kwon - Undergraduate Student, AI Researcher</title>
+    <title>Jihoon Kwon | AI Researcher</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <style>
+        :root {
+            --mit-red: #750014;
+            --mit-bright-red: #ff1423;
+            --mit-black: #000000;
+            --mit-silver-gray: #8b959e;
+            --mit-dark-gray: #212326;
+            --mit-medium-gray: #626a73;
+            --mit-light-gray: #c2c0bf;
+            --mit-blue: #002896;
+            --bg: #f6f7f8;
+            --panel: #ffffff;
+            --line: #d9dde2;
+            --text: #202326;
+            --subtext: #4f5660;
+            --shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+        }
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #494982;
-            background: linear-gradient(to bottom, #F4F4FB, #A8A8DB);
-            min-height: 100vh;
+            font-family: "Space Grotesk", "Noto Sans KR", "Helvetica Neue", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 12% 0%, rgba(139, 149, 158, 0.22), transparent 38%),
+                radial-gradient(circle at 90% 12%, rgba(117, 0, 20, 0.06), transparent 44%),
+                linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+            line-height: 1.65;
         }
 
-        .container {
-            max-width: 1200px;
+        .page {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 10px;
+            padding: 28px 20px 56px;
         }
 
-        header {
+        .top-nav {
             display: flex;
-            align-items: center;
-            gap: 40px;
-            margin-bottom: 60px;
-            border-bottom: 1px solid #828282;
-            padding-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 18px;
         }
 
-        .header-left {
-            flex: 1;
+        .top-nav a {
+            text-decoration: none;
+            color: var(--mit-dark-gray);
+            font-size: 0.88rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 7px 12px;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        .top-nav a.nav-publications {
+            color: var(--mit-red);
+            border-color: var(--line);
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .top-nav a:hover {
+            border-color: var(--mit-black);
+            color: var(--mit-black);
+            background: rgba(139, 149, 158, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 28px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(242, 244, 246, 0.92));
+            border: 1px solid var(--line);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 26px;
+        }
+
+        .hero-left {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        .header-right {
-            flex: 3;
-            text-align: left;
-            padding-left: 10px;
-        }
-
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            margin-bottom: 20px;
-            border: 3px solid #f0f0f0;
             object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+            margin-bottom: 14px;
         }
 
         h1 {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #5E5E82;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            line-height: 1.1;
+            margin-bottom: 8px;
+            color: var(--mit-dark-gray);
         }
 
-        .title {
-            font-size: 1.3em;
-            color: #696982;
-            margin-bottom: 20px;
+        .role {
+            color: var(--mit-medium-gray);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            margin-top: 8px;
+            color: var(--mit-medium-gray);
+            font-size: 0.95rem;
+            max-width: 520px;
         }
 
         .contact-info {
             display: flex;
-            justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         .contact-info a {
-            color: #737382;
-            text-decoration: none;
-            font-size: 1.5em;
-            transition: transform 0.2s ease;
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--panel);
+            transition: all 0.2s ease;
         }
 
         .contact-info a:hover {
-            transform: scale(1.2);
+            border-color: var(--mit-silver-gray);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(33, 35, 38, 0.15);
         }
 
         .iico {
-            width: 24px;
-            height: 24px;
-            filter: invert(44%) sepia(9%) saturate(634%) hue-rotate(215deg) brightness(95%) contrast(85%);
+            width: 20px;
+            height: 20px;
         }
 
-        .bio {
-            max-width: 800px;
-            margin: 0;
-            text-align: left;
-            color: #545482;
-            line-height: 1.4;
+        .hero-right p {
+            color: var(--subtext);
+            margin-bottom: 12px;
         }
 
-        .bio p {
-            margin-bottom: 15px;
-        }
-
-        .bio p:last-child {
+        .hero-right p:last-child {
             margin-bottom: 0;
         }
 
         section {
-            margin-bottom: 50px;
-        }
-
-        #interests p {
-            margin-bottom: 15px;
-        }
-
-        section em {
-            color: #1e0349;
-            font-style: italic;
-            text-decoration: underline;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 24px;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
         }
 
         h2 {
-            font-size: 1.8em;
+            font-size: 1.35rem;
+            color: var(--mit-black);
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(139, 149, 158, 0.45);
+        }
+
+        #publications h2 {
+            color: var(--mit-red);
+        }
+
+        #interests p {
+            margin-bottom: 12px;
+            color: var(--subtext);
+        }
+
+        #interests p:last-child {
+            margin-bottom: 0;
+        }
+
+        #interests em {
+            color: var(--mit-black);
+            font-style: normal;
             font-weight: 600;
-            margin-bottom: 25px;
-            color: #494982;
-            border-bottom: 2px solid #7D7D82;
-            padding-bottom: 5px;
+            text-decoration: underline;
+            text-decoration-color: rgba(117, 0, 20, 0.5);
+            text-underline-offset: 2px;
         }
 
         .publication-item {
-            margin-bottom: 25px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.3);
-            border-left: 4px solid #7D7D82;
-            border-radius: 0 5px 5px 0;
+            border: 1px solid rgba(139, 149, 158, 0.35);
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 12px;
+            background: linear-gradient(145deg, #ffffff, #f8fafb);
+        }
+
+        .publication-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .publication-header {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 8px;
         }
 
         .publication-title {
-            font-weight: 600;
-            font-size: 1.1em;
-            color: #494982;
-            margin-bottom: 8px;
+            font-size: 1.06rem;
+            font-weight: 700;
+            color: var(--mit-dark-gray);
+        }
+
+        .venue-badge {
+            display: inline-block;
+            font-size: 0.74rem;
+            letter-spacing: 0.03em;
+            font-weight: 700;
+            text-transform: none;
+            border-radius: 999px;
+            padding: 4px 10px;
+            background: rgba(117, 0, 20, 0.1);
+            color: var(--mit-red);
+            border: 1px solid rgba(117, 0, 20, 0.3);
+            white-space: nowrap;
         }
 
         .publication-authors {
-            font-style: italic;
-            color: #696982;
-            margin-bottom: 5px;
+            color: var(--subtext);
+            margin-bottom: 4px;
         }
 
         .publication-venue {
-            color: #737382;
-            font-weight: 500;
+            color: var(--mit-red);
+            font-size: 0.95rem;
+            font-weight: 600;
             margin-bottom: 8px;
         }
 
+        .publication-abstract {
+            color: var(--subtext);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
         .publication-links {
-            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .publication-links a {
-            display: inline-block;
-            padding: 4px 12px;
-            background-color: #7D7D82;
-            color: white;
             text-decoration: none;
-            border-radius: 3px;
-            font-size: 0.85em;
-            margin-right: 8px;
-            margin-bottom: 5px;
+            font-size: 0.84rem;
+            font-weight: 700;
+            padding: 6px 11px;
+            border-radius: 10px;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .publication-links a.primary {
+            background: var(--mit-red);
+            color: #fff;
+            border-color: var(--mit-red);
+        }
+
+        .publication-links a.secondary {
+            color: var(--mit-dark-gray);
+            border-color: var(--mit-silver-gray);
+            background: rgba(139, 149, 158, 0.12);
         }
 
         .publication-links a:hover {
-            background-color: #696982;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
         }
 
-        .education-item, .experience-item, .project-item {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #828282;
+        .publication-links a.primary:hover {
+            background: #5f0010;
+        }
+
+        #publications .publication-links a,
+        #publications .publication-links a.primary,
+        #publications .publication-links a.secondary {
+            background: var(--mit-red);
+            border-color: var(--mit-red);
+            color: #ffffff;
+        }
+
+        #publications .publication-links a:hover {
+            background: #5f0010;
+            border-color: #5f0010;
+        }
+
+        .timeline-item {
             position: relative;
-            padding-left: 70px;
+            padding-left: 88px;
+            padding-bottom: 18px;
+            margin-bottom: 16px;
+            border-bottom: 1px solid var(--line);
         }
 
-        .education-item, .experience-item, .project-item {
-            padding-left: 90px;
-        }
-
-        .company-logo {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-        }
-
-        .project-logo {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-        }
-
-        .school-logo {
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 70px;
-            height: 70px;
-            object-fit: contain;
-        }
-
-        .education-item:last-child, .experience-item:last-child, .project-item:last-child {
+        .timeline-item:last-child {
             border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-logo {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 1px solid #edf0f2;
+            background: #fff;
+            padding: 6px;
         }
 
         .item-header {
             display: flex;
             justify-content: space-between;
+            gap: 12px;
             align-items: flex-start;
-            margin-bottom: 10px;
             flex-wrap: wrap;
+            margin-bottom: 8px;
         }
 
         .item-title {
-            font-weight: 600;
-            color: #494982;
-            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--mit-dark-gray);
         }
 
-        .item-institution, .item-company {
-            color: #737382;
+        .item-institution,
+        .item-company {
+            color: var(--mit-medium-gray);
             font-weight: 500;
         }
 
         .item-date {
-            color: #696982;
-            font-size: 0.9em;
+            font-size: 0.88rem;
+            color: var(--mit-medium-gray);
             white-space: nowrap;
         }
 
         .item-description {
-            margin-top: 10px;
-            color: #5E5E82;
+            color: var(--subtext);
         }
 
         .item-description ul {
-            padding-left: 20px;
             margin-top: 8px;
+            padding-left: 18px;
         }
 
         .item-description li {
-            margin-bottom: 5px;
-        }
-
-        .project-tech {
-            margin-top: 10px;
-        }
-
-        .tech-tag {
-            display: inline-block;
-            background-color: #7D7D82;
-            color: white;
-            padding: 3px 8px;
-            border-radius: 12px;
-            font-size: 0.85em;
-            margin-right: 6px;
             margin-bottom: 4px;
-        }
-
-        .blog-item {
-            margin-bottom: 20px;
-            padding: 15px 0;
-            border-bottom: 1px solid #828282;
-        }
-
-        .blog-item:last-child {
-            border-bottom: none;
-        }
-
-        .blog-title {
-            font-weight: 600;
-            color: #494982;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-
-        .blog-title:hover {
-            color: #737382;
-        }
-
-        .blog-date {
-            color: #696982;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-
-        .blog-excerpt {
-            margin-top: 8px;
-            color: #5E5E82;
         }
 
         footer {
             text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #828282;
-            color: #696982;
-            font-size: 0.9em;
+            color: var(--mit-medium-gray);
+            font-size: 0.9rem;
+            padding-top: 8px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px 10px;
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 22px;
+                gap: 20px;
             }
 
-            header {
-                flex-direction: column;
-                gap: 30px;
-                text-align: center;
-            }
-
-            .header-left, .header-right {
-                flex: none;
-            }
-
-            .header-right {
-                text-align: center;
-            }
-
-            h1 {
-                font-size: 2em;
+            .hero-left {
+                align-items: flex-start;
+                text-align: left;
             }
 
             .contact-info {
-                justify-content: center;
-                gap: 15px;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .page {
+                padding: 20px 12px 40px;
             }
 
-            .item-header {
-                flex-direction: column;
-                align-items: flex-start;
+            section {
+                padding: 18px;
+                border-radius: 14px;
             }
 
-            .item-date {
-                margin-top: 5px;
+            .timeline-item {
+                padding-left: 0;
+            }
+
+            .timeline-logo {
+                position: static;
+                margin-bottom: 10px;
             }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <header>
-        <div class="header-left">
-            <h1>Jihoon Kwon</h1>
+<div class="page">
+    <nav class="top-nav">
+        <a href="#interests">Research</a>
+        <a href="#publications" class="nav-publications">Publications</a>
+        <a href="#education">Education</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-left">
             <img src="assets/profile.jpeg" alt="Jihoon Kwon" class="profile-img">
             <div class="contact-info">
-                <a href="mailto:kog0712@snu.ac.kr">
-                    <img src="assets/mail.svg" class="iico" alt="Connect with Jihoon via Email">
+                <a href="mailto:kog0712@snu.ac.kr" aria-label="Email Jihoon Kwon">
+                    <img src="assets/mail.svg" class="iico" alt="">
                 </a>
-                <a href="https://github.com/JiH00nKw0n">
-                    <img src="assets/github.svg" class="iico" alt="Connect with Jihoon on GitHub">
+                <a href="https://github.com/JiH00nKw0n" target="_blank" rel="noopener noreferrer" aria-label="Jihoon Kwon GitHub">
+                    <img src="assets/github.svg" class="iico" alt="">
                 </a>
-                <a href="https://www.linkedin.com/in/jihoonkwon-127312240">
-                    <img src="assets/linkedin.svg" class="iico" alt="Connect with Jihoon on LinkedIn">
+                <a href="https://www.linkedin.com/in/jihoonkwon-127312240" target="_blank" rel="noopener noreferrer" aria-label="Jihoon Kwon LinkedIn">
+                    <img src="assets/linkedin.svg" class="iico" alt="">
                 </a>
-                <a href="https://scholar.google.com/citations?user=AFBlcwsAAAAJ&hl=ko">
-                    <img src="assets/googlescholar.svg" class="iico" alt="Connect with Jihoon on Google Scholar">
+                <a href="https://scholar.google.com/citations?user=AFBlcwsAAAAJ&amp;hl=ko" target="_blank" rel="noopener noreferrer" aria-label="Jihoon Kwon Google Scholar">
+                    <img src="assets/googlescholar.svg" class="iico" alt="">
                 </a>
             </div>
         </div>
-        <div class="header-right">
-            <div class="title">Extraordinary achievements are born from the accumulation of ordinary efforts.</div>
-            <div class="bio">
-                <p>
-                    I am an undergraduate from Seoul National University, beginning my journey toward understanding
-                    the faithfulness of AI models—why models fail at tasks that are simple for humans, and how to
-                    make them remain grounded in the evidence they receive. My primary focus is on multi-modal learning,
-                    particularly vision-language models, where I study compositional reasoning failures and develop
-                    methods to mitigate hallucination.
-                </p>
-
-                <p>
-                    I am also starting to explore in-context learning, beginning with language models and working
-                    toward extending these ideas to multi-modal contexts. At LinqAlpha, I build vision-language agents
-                    that automate investor workflows through accurate and faithful analysis of public filings.
-                </p>
-            </div>
+        <div class="hero-right">
+            <h1>Jihoon Kwon</h1>
+            <div class="role">AI Researcher</div>
+            <div class="quote">Extraordinary achievements are born from the accumulation of ordinary efforts.</div>
+            <p>
+                I graduated from Seoul National University and currently work at LinqAlpha.
+                I enjoy both research and engineering, and I am most energized by asking important questions that no one has solved before and working through them to clear, grounded answers.
+                That process helps me focus deeply and think with clarity.
+            </p>
         </div>
     </header>
+
     <section id="interests">
         <h2>Research Interest</h2>
         <p>
-            My research interests stem from a fundamental observation: despite the remarkable progress in foundation
-            models, these models <em>still struggle with tasks that humans perform in a fundamental and intuitive
-            manner</em> - revealing critical gaps in how machines understand and reason about the world.
-            I firmly believe that developing models capable of understanding and reasoning in a human-like way is
-            essential to advancing human freedom, equality, and social solidarity.
+            My vision is to help build <em>multi-modal agents that can control computers and automate labor</em>, so people can focus on what truly matters.
+            Just as AlphaGo reshaped public expectations by decisively defeating world champions in Go, I believe we will eventually see AI agents that, under the same constraints as humans, can outperform top players in complex online games.
+            I want to contribute to making that future possible in a way that is not only powerful, but also <em>faithful, reliable, and efficient</em>.
         </p>
-
         <p>
-            My primary focus is on <em>multi-modal models</em>, specifically because I've discovered they struggle with
-            fundamental tasks that should be trivial.
-            For example, I researched compositional reasoning in CLIP-like models and found that alignment between
-            vision and language modalities barely captures the relationships between elements.
-            Recently, I've been investigating hallucination—how to prevent models from generating descriptions of
-            content that simply isn't in the image.
+            To make that future real, capability alone is not enough: models must remain <em>faithful to evidence</em> while <em>reasoning efficiently</em>, and they must <em>plan, search, and use tools</em> at a level that can exceed human experts across diverse tasks.
+            Recent advances in AI, with remarkable multi-modal and tool-use capability, increasingly make this future feel within reach.
         </p>
-
         <p>
-            I'm also exploring <em>in-context learning (ICL)</em> and <em>instruction following</em>, which are
-            intuitive for humans and increasingly effective in models—seeking to understand and exploiting these
-            fundamental adaptive capabilities.
-            On ICL, I seek to understand what makes in-context learning effective at the mechanistic level, working on
-            methods to measure and identify which internal representation changes lead to performance improvements.
-            On instruction following, I have been working on projects that leverage this capability to create real-world
-            value—including computer use automation and investment research applications.
+            However, current models still fail in ways that matter in practice: they can drift from the given evidence, reason for a long time through ungrounded reasoning traces, and invoke the wrong tools at critical decision points.
+            I want to contribute to <em>closing that gap</em>, and my current research interests focus on <em>multi-modal faithfulness, efficient reasoning, planning, and test-time scaling</em>.
         </p>
     </section>
 
@@ -432,49 +493,61 @@
         <h2>Publications</h2>
 
         <div class="publication-item">
-            <div class="publication-title">Enhancing Compositional Reasoning in CLIP via Reconstruction and Alignment of
-                Text Descriptions
+            <div class="publication-header">
+                <div class="publication-title">Distributional Alignment as a Principle for Designing Task Vectors in In-Context Learning</div>
+                <span class="venue-badge">In Submission</span>
+            </div>
+            <div class="publication-authors"><strong>Jihoon Kwon</strong>, Jiwon Choi, Jy-yong Sohn</div>
+            <div class="publication-venue">Preprint</div>
+            <div class="publication-abstract">
+                In this paper, we study task vectors for in-context learning and introduce an evaluation metric and an extraction method grounded in the principle of distributional alignment with ICL.
+            </div>
+            <div class="publication-links">
+                <a class="primary" href="assets/Task_Vector.pdf" target="_blank" rel="noopener noreferrer">View PDF</a>
+            </div>
+        </div>
+
+        <div class="publication-item">
+            <div class="publication-header">
+                <div class="publication-title">Enhancing Compositional Reasoning in CLIP via Reconstruction and Alignment of Text Descriptions</div>
+                <span class="venue-badge">NeurIPS 2025</span>
             </div>
             <div class="publication-authors"><strong>Jihoon Kwon</strong>, Kyle Min, Jy-yong Sohn</div>
-            <div class="publication-venue">The Thirty-Ninth Annual Conference on Neural Information Processing Systems
-                (NeurIPS 2025 Poster)
-            </div>
+            <div class="publication-venue">NeurIPS 2025 Poster</div>
             <div class="publication-links">
-                <a href="https://neurips.cc/virtual/2025/poster/119758">Paper</a>
-                <a href="https://anonymous.4open.science/r/READ-CLIP-6311/README.md">Code</a>
+                <a class="primary" href="https://neurips.cc/virtual/2025/poster/119758" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="secondary" href="https://anonymous.4open.science/r/READ-CLIP-6311/README.md" target="_blank" rel="noopener noreferrer">Code</a>
             </div>
         </div>
 
         <div class="publication-item">
-            <div class="publication-title">Thematic Scoring: Quantifying Contextual Narratives using Language Models
+            <div class="publication-header">
+                <div class="publication-title">Thematic Scoring: Quantifying Contextual Narratives using Language Models</div>
             </div>
-            <div class="publication-authors">Alejandro Lopez-Lira, Chanyeol Choi, Yoon Kim, <strong>Jihoon Kwon</strong>,
-                Jin Kim, Suyeol Yun
-            </div>
+            <div class="publication-authors">Alejandro Lopez-Lira, Chanyeol Choi, Yoon Kim, <strong>Jihoon Kwon</strong>, Jin Kim, Suyeol Yun</div>
             <div class="publication-venue">SSRN 5233994</div>
             <div class="publication-links">
-                <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5233994">Paper</a>
+                <a class="primary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5233994" target="_blank" rel="noopener noreferrer">Paper</a>
             </div>
         </div>
 
         <div class="publication-item">
-            <div class="publication-title">Linq-Embed-Mistral Technical Report</div>
-            <div class="publication-authors">Chanyeol Choi, Junseong Kim, Seolhwa Lee, <strong>Jihoon Kwon</strong>,
-                Sangmo Gu, Yejin Kim, Minkyung Cho, Jy-yong Sohn
+            <div class="publication-header">
+                <div class="publication-title">Linq-Embed-Mistral Technical Report</div>
             </div>
-            <div class="publication-venue">ArXiv 2412.03223</div>
+            <div class="publication-authors">Chanyeol Choi, Junseong Kim, Seolhwa Lee, <strong>Jihoon Kwon</strong>, Sangmo Gu, Yejin Kim, Minkyung Cho, Jy-yong Sohn</div>
+            <div class="publication-venue">arXiv:2412.03223</div>
             <div class="publication-links">
-                <a href="https://arxiv.org/abs/2412.03223">Paper</a>
-                <a href="https://huggingface.co/Linq-AI-Research/Linq-Embed-Mistral">Model</a>
+                <a class="primary" href="https://arxiv.org/abs/2412.03223" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="secondary" href="https://huggingface.co/Linq-AI-Research/Linq-Embed-Mistral" target="_blank" rel="noopener noreferrer">Model</a>
             </div>
         </div>
     </section>
 
     <section id="education">
         <h2>Education</h2>
-
-        <div class="education-item">
-            <img src="assets/snu.svg" alt="Seoul National University" class="school-logo">
+        <div class="timeline-item">
+            <img src="assets/snu.svg" alt="Seoul National University" class="timeline-logo">
             <div class="item-header">
                 <div>
                     <div class="item-title">B.S. in Industrial Engineering</div>
@@ -491,9 +564,8 @@
 
     <section id="experience">
         <h2>Work Experience</h2>
-
-        <div class="experience-item">
-            <img src="assets/linqalpha.svg" alt="LinqAlpha" class="company-logo">
+        <div class="timeline-item">
+            <img src="assets/linqalpha.svg" alt="LinqAlpha" class="timeline-logo">
             <div class="item-header">
                 <div>
                     <div class="item-title">Fundamental Research Engineer - AI/LLM</div>
@@ -503,19 +575,15 @@
             </div>
             <div class="item-description">
                 <ul>
-                    <li>Developing a GUI-based Vision-Language-Action agent to automatically enter, record, and
-                        transcribe earnings, conference, and special calls.
-                    </li>
-                    <li>Taking full ownership of research and critical experiments applying LLMs in finance.</li>
-                    <li>Building and managing an end-to-end project to develop, collect and publish a finance-specific
-                        benchmark for training and evaluating LLMs.
-                    </li>
+                    <li>Developing a GUI-based Vision-Language-Action agent to automatically enter, record, and transcribe earnings and conference calls.</li>
+                    <li>Owning research and critical experiments for finance-focused LLM applications.</li>
+                    <li>Building an end-to-end benchmark pipeline for training and evaluating finance-specific LLM systems.</li>
                 </ul>
             </div>
         </div>
 
-        <div class="experience-item">
-            <img src="assets/yonsei.svg" alt="Yonsei University" class="company-logo">
+        <div class="timeline-item">
+            <img src="assets/yonsei.svg" alt="Yonsei University" class="timeline-logo">
             <div class="item-header">
                 <div>
                     <div class="item-title">Research Intern</div>
@@ -525,100 +593,62 @@
             </div>
             <div class="item-description">
                 <ul>
-                    <li>Proposed READ-CLIP, a fine-tuning method that enhances compositional reasoning in vision-language models via auxiliary losses (NeurIPS 2025).</li>
-                    <li>Researching a PCA-based steering method to mitigate hallucination in large vision-language models by guiding attention toward salient image features based on instructions.</li>
-                    <li>Researching principled evaluation metrics for in-context learning task vectors, and developing methods to flexibly handle variance induced by test inputs.</li>
+                    <li>Proposed READ-CLIP, a fine-tuning method for compositional reasoning in vision-language models (NeurIPS 2025).</li>
+                    <li>Researching a PCA-based steering method to mitigate hallucination in large vision-language models.</li>
+                    <li>Researching principled evaluation metrics for in-context learning task vectors and robust methods for test-time variance.</li>
                 </ul>
             </div>
         </div>
-
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
 
-        <div class="project-item">
-            <img src="assets/sqa.avif" alt="SQA Alphathon 2025" class="project-logo">
+        <div class="timeline-item">
+            <img src="assets/sqa.avif" alt="SQA Alphathon 2025" class="timeline-logo">
             <div class="item-header">
-                <div class="item-title">🏆 SQA Alphathon 2025 Winner (Can LLMs Hit Moving Targets? Tracking Evolving
-                    Signals in Corporate Disclosures)
-                </div>
-                <div class="item-date">Oct 2025</div>
+                <div class="item-title">SQA Alphathon 2025 Winner: Tracking Evolving Signals in Corporate Disclosures</div>
+                <div class="item-date">October 2025</div>
             </div>
             <div class="item-description">
-                Developed an end-to-end LLM system that predicts stock returns by detecting strategic metric shifts in
-                earnings calls:
+                Developed an end-to-end LLM system for stock return prediction by detecting strategic metric shifts in earnings calls.
                 <ul>
-                    <li><strong>Competition Winner:</strong> Won SQA Alphathon 2025 with 3.6× better stock return
-                        forecasting performance compared to the original method, demonstrating superior predictive power
-                        in real market applications
-                    </li>
-                    <li><strong>Novel LLM Framework:</strong> Designed context-aware extraction method and semantic
-                        scoring system to track how companies shift emphasized metrics over time—overcoming traditional
-                        keyword-based approaches that lose contextual information
-                    </li>
-                    <li><strong>Project Leadership:</strong> Led entire project from problem formulation to final
-                        validation, designing novel extraction methodology, architecting the system, and orchestrating
-                        all experimental workflows
-                    </li>
+                    <li>Won SQA Alphathon 2025 with 3.6x better forecasting performance than the original method.</li>
+                    <li>Designed context-aware extraction and semantic scoring to capture evolving corporate narratives.</li>
+                    <li>Led full project execution from problem definition to final validation.</li>
                 </ul>
             </div>
             <div class="publication-links">
-                <a href="https://www.alphathon.org/winners/">Competition</a>
-                <a href="https://www.linkedin.com/posts/society-of-quantitative-analysts_csp-alphathon-alphathon2025-activity-7382497413611134976-JSV6?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvYwy8B2B-Te9RxithhN1mpwqEiCljaC_4">LinkedIn</a>
-                <a href="https://arxiv.org/abs/2510.03195">Short Paper</a>
+                <a class="secondary" href="https://www.alphathon.org/winners/" target="_blank" rel="noopener noreferrer">Competition</a>
+                <a class="secondary" href="https://www.linkedin.com/posts/society-of-quantitative-analysts_csp-alphathon-alphathon2025-activity-7382497413611134976-JSV6?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADvYwy8B2B-Te9RxithhN1mpwqEiCljaC_4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="secondary" href="https://arxiv.org/abs/2510.03195" target="_blank" rel="noopener noreferrer">Short Paper</a>
             </div>
         </div>
 
-        <div class="project-item">
-            <img src="https://framerusercontent.com/images/hR0zBf3gaEChVdowK2MBsfMrwHc.png?scale-down-to=2048&lossless=1"
-                 alt="LinqAlpha Project" class="project-logo">
+        <div class="timeline-item">
+            <img src="https://framerusercontent.com/images/hR0zBf3gaEChVdowK2MBsfMrwHc.png?scale-down-to=2048&amp;lossless=1" alt="LinqAlpha Project" class="timeline-logo">
             <div class="item-header">
-                <div class="item-title">🏆 World Best Vector-based Retrieval Model (Linq-Embed-Mistral)</div>
+                <div class="item-title">World Best Vector-based Retrieval Model (Linq-Embed-Mistral)</div>
                 <div class="item-date">May 2024</div>
             </div>
             <div class="item-description">
-                Built data pipeline and training infrastructure for Linq-Embed-Mistral, a state-of-the-art embedding
-                model:
+                Built data pipeline and training infrastructure for Linq-Embed-Mistral, a state-of-the-art embedding model.
                 <ul>
-                    <li><strong>Best Embedding Model:</strong> Achieved #1 ranking on Hugging Face MTEB leaderboard
-                        among 200+ models, surpassing OpenAI, Google, Cohere, and Nvidia with state-of-the-art retrieval
-                        performance
-                    </li>
-                    <li><strong>Data-Centric Approach:</strong> Designed hard negative mining strategies and dataset
-                        curation methods that enabled state-of-the-art retrieval accuracy while maintaining strong
-                        generalization without benchmark overfitting
-                    </li>
-                    <li><strong>Hands-On Implementation:</strong> Built complete data pipeline infrastructure,
-                        implemented hard negative mining algorithms, and executed systematic training and evaluation
-                        experiments to achieve optimal model performance
-                    </li>
+                    <li>Achieved #1 on the Hugging Face MTEB leaderboard among 200+ models.</li>
+                    <li>Designed hard-negative mining and dataset curation strategies for robust generalization.</li>
+                    <li>Implemented the complete data and evaluation pipeline for systematic optimization.</li>
                 </ul>
             </div>
             <div class="publication-links">
-                <a href="https://huggingface.co/spaces/mteb/leaderboard">Leaderboard</a>
-                <a href="https://www.linkedin.com/posts/chanyeolchoi_weve-just-updated-the-mteb-embeddings-activity-7300563744697290752-bVjV?utm_source=share&utm_medium=member_desktop&rcm=ACoAADvYwy8B2B-Te9RxithhN1mpwqEiCljaC_4">LinkedIn</a>
-                <a href="https://linqalpha.com/blog/linq-embed-mistral">Blog</a>
+                <a class="secondary" href="https://huggingface.co/spaces/mteb/leaderboard" target="_blank" rel="noopener noreferrer">Leaderboard</a>
+                <a class="secondary" href="https://www.linkedin.com/posts/chanyeolchoi_weve-just-updated-the-mteb-embeddings-activity-7300563744697290752-bVjV?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAADvYwy8B2B-Te9RxithhN1mpwqEiCljaC_4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a class="secondary" href="https://linqalpha.com/blog/linq-embed-mistral" target="_blank" rel="noopener noreferrer">Blog</a>
             </div>
         </div>
     </section>
 
-    <section id="blog">
-        <h2>Blog</h2>
-        <!--            -->
-        <!--            <div class="blog-item">-->
-        <!--                <a href="#" class="blog-title">The Future of Large Language Models: Scaling and Efficiency</a>-->
-        <!--                <div class="blog-date">March 15, 2024</div>-->
-        <!--                <div class="blog-excerpt">-->
-        <!--                    Exploring the latest developments in LLM architectures and discussing the trade-offs between -->
-        <!--                    model size, computational efficiency, and performance across different tasks.-->
-        <!--                </div>-->
-        <!--            </div>-->
-
-    </section>
-
     <footer>
-        <p>&copy; 2025 Jihoon Kwon. All rights reserved.</p>
+        <p>&copy; 2026 Jihoon Kwon. All rights reserved.</p>
     </footer>
 </div>
 </body>
