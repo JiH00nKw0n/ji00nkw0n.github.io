@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jihoon Kwon | AI Researcher</title>
+    <title>Jihoon Kwon | Master's Student, Seoul National University</title>
+    <meta name="description" content="Jihoon Kwon is a master's student in Artificial Intelligence at Seoul National University, advised by Jaeyoung Do in the AIDAS Lab. Research on model representations, publications, and news.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
@@ -33,6 +34,16 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        section,
+        .publication-item {
+            scroll-margin-top: 24px;
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--mit-blue);
+            outline-offset: 4px;
         }
 
         body {
@@ -75,6 +86,12 @@
             color: var(--mit-red);
             border-color: var(--line);
             background: rgba(255, 255, 255, 0.8);
+        }
+
+        .top-nav a.nav-news {
+            color: var(--mit-red);
+            border-color: rgba(117, 0, 20, 0.3);
+            background: rgba(117, 0, 20, 0.05);
         }
 
         .top-nav a:hover {
@@ -120,14 +137,9 @@
             color: var(--mit-dark-gray);
         }
 
-        .role {
-            color: var(--mit-medium-gray);
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
         .quote {
             margin-top: 8px;
+            margin-bottom: 14px;
             color: var(--mit-medium-gray);
             font-size: 0.95rem;
             max-width: 520px;
@@ -173,6 +185,14 @@
             margin-bottom: 0;
         }
 
+        .hero-right a,
+        .item-description a,
+        .item-institution a {
+            color: var(--mit-red);
+            text-decoration-thickness: 1px;
+            text-underline-offset: 3px;
+        }
+
         section {
             background: var(--panel);
             border: 1px solid var(--line);
@@ -194,6 +214,45 @@
             color: var(--mit-red);
         }
 
+        .news-item {
+            display: grid;
+            grid-template-columns: 130px minmax(0, 1fr);
+            gap: 20px;
+            border-left: 3px solid var(--mit-red);
+            padding-left: 18px;
+        }
+
+        .news-date {
+            color: var(--mit-red);
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding-top: 3px;
+        }
+
+        .news-title {
+            color: var(--mit-dark-gray);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 4px;
+        }
+
+        .news-copy {
+            color: var(--subtext);
+        }
+
+        .news-papers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px 20px;
+            margin-top: 10px;
+        }
+
+        .news-papers a {
+            color: var(--mit-red);
+            font-size: 0.9rem;
+            text-underline-offset: 3px;
+        }
+
         #interests p {
             margin-bottom: 12px;
             color: var(--subtext);
@@ -201,15 +260,6 @@
 
         #interests p:last-child {
             margin-bottom: 0;
-        }
-
-        #interests em {
-            color: var(--mit-black);
-            font-style: normal;
-            font-weight: 600;
-            text-decoration: underline;
-            text-decoration-color: rgba(117, 0, 20, 0.5);
-            text-underline-offset: 2px;
         }
 
         .publication-item {
@@ -237,6 +287,7 @@
             font-size: 1.06rem;
             font-weight: 700;
             color: var(--mit-dark-gray);
+            flex: 1 1 580px;
         }
 
         .venue-badge {
@@ -251,20 +302,6 @@
             color: var(--mit-red);
             border: 1px solid rgba(117, 0, 20, 0.3);
             white-space: nowrap;
-        }
-
-        .oral-tag {
-            display: inline-block;
-            background: var(--mit-red);
-            color: #fff;
-            font-weight: 800;
-            padding: 1px 7px;
-            border-radius: 4px;
-            margin-left: 5px;
-            font-size: 0.7rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            vertical-align: baseline;
         }
 
         .publication-authors {
@@ -283,6 +320,22 @@
             color: var(--subtext);
             font-size: 0.95rem;
             margin-bottom: 10px;
+        }
+
+        .publication-abstract p + p {
+            margin-top: 6px;
+        }
+
+        .contribution-note,
+        .publications-note {
+            margin-top: 16px;
+            color: var(--subtext);
+            font-size: 0.95rem;
+        }
+
+        .publications-note a {
+            color: var(--mit-red);
+            text-underline-offset: 3px;
         }
 
         .publication-links {
@@ -443,12 +496,30 @@
                 position: static;
                 margin-bottom: 10px;
             }
+
+            .news-item {
+                grid-template-columns: 1fr;
+                gap: 6px;
+                padding-left: 14px;
+            }
+
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            a {
+                transition: none !important;
+            }
         }
     </style>
 </head>
 <body>
 <div class="page">
-    <nav class="top-nav">
+    <nav class="top-nav" aria-label="Main navigation">
+        <a href="#news" class="nav-news">News</a>
         <a href="#interests">Research</a>
         <a href="#publications" class="nav-publications">Publications</a>
         <a href="#education">Education</a>
@@ -476,63 +547,76 @@
         </div>
         <div class="hero-right">
             <h1>Jihoon Kwon</h1>
-            <div class="role">AI Researcher</div>
             <div class="quote">Extraordinary achievements are born from the accumulation of ordinary efforts.</div>
             <p>
-                I graduated from Seoul National University and currently work at LinqAlpha.
-                I enjoy both research and engineering, and I am most energized by asking important questions that no one has solved before and working through them to clear, grounded answers.
-                That process helps me focus deeply and think with clarity.
+                I am a master's student at <a href="https://gsai.snu.ac.kr/en/" target="_blank" rel="noopener noreferrer">Seoul National University</a>,
+                advised by <a href="https://sites.google.com/view/jydo/home" target="_blank" rel="noopener noreferrer">Prof. Jaeyoung Do</a> in the <a href="https://aidas.snu.ac.kr/" target="_blank" rel="noopener noreferrer">AIDAS Lab</a>.
+            </p>
+            <p>
+                I study how models represent information internally and how we can use that understanding to improve their performance.
+                My work spans language models, multi-modal models, and vision-language-action models.
             </p>
         </div>
     </header>
 
+    <section id="news" aria-labelledby="news-heading">
+        <h2 id="news-heading">News</h2>
+        <article class="news-item">
+            <time class="news-date" datetime="2026-09">September 2026</time>
+            <div>
+                <h3 class="news-title">Two papers accepted to NeurIPS 2026</h3>
+                <p class="news-copy">I'm a co-first author on both papers.</p>
+                <div class="news-papers">
+                    <a href="#same-concept">Same Concept, Different Directions</a>
+                    <a href="#task-vectors">Distributional Alignment for Task Vectors</a>
+                </div>
+            </div>
+        </article>
+    </section>
+
     <section id="interests">
-        <h2>Research Interest</h2>
+        <h2>Research Interests</h2>
         <p>
-            My vision is to help build <em>multi-modal agents that can control computers and automate labor</em>, so people can focus on what truly matters.
-            Just as AlphaGo reshaped public expectations by decisively defeating world champions in Go, I believe we will eventually see AI agents that, under the same constraints as humans, can outperform top players in complex online games.
-            I want to contribute to making that future possible in a way that is not only powerful, but also <em>faithful, reliable, and efficient</em>.
-        </p>
-        <p>
-            To make that future real, capability alone is not enough: models must remain <em>faithful to evidence</em> while <em>reasoning efficiently</em>, and they must <em>plan, search, and use tools</em> at a level that can exceed human experts across diverse tasks.
-            Recent advances in AI, with remarkable multi-modal and tool-use capability, increasingly make this future feel within reach.
-        </p>
-        <p>
-            However, current models still fail in ways that matter in practice: they can drift from the given evidence, reason for a long time through ungrounded reasoning traces, and invoke the wrong tools at critical decision points.
-            I want to contribute to <em>closing that gap</em>, and my current research interests focus on <em>multi-modal faithfulness, efficient reasoning, planning, and test-time scaling</em>.
+            My research focuses on understanding and improving the internal representations of machine learning models.
+            These representations, often called embeddings, encode information as vectors.
+            I study what they capture and how changing them affects a model's behavior, with the goal of using that understanding to improve model performance.
         </p>
     </section>
 
     <section id="publications">
-        <h2>Selective Publications</h2>
+        <h2>Selected Publications</h2>
 
-        <div class="publication-item">
+        <div class="publication-item" id="same-concept">
             <div class="publication-header">
-                <div class="publication-title">Distributional Alignment as a Criterion for Designing Task Vectors in In-Context Learning</div>
-                <span class="venue-badge">In Submission</span>
+                <h3 class="publication-title">Same Concept, Different Directions: Cross-Modal Feature Heterogeneity in Sparse Autoencoders</h3>
+                <span class="venue-badge">NeurIPS 2026</span>
             </div>
-            <div class="publication-authors"><strong>Jihoon Kwon</strong>, Jiwon Choi, Jy-yong Sohn</div>
-            <div class="publication-venue">Preprint</div>
+            <div class="publication-authors">Chungpa Lee<sup>*</sup>, <strong>Jihoon Kwon<sup>*</sup></strong>, Kyle Min, Jy-yong Sohn</div>
+            <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
             <div class="publication-abstract">
-                In this paper, we study task vectors for in-context learning and introduce an evaluation metric and an extraction method grounded in the principle of distributional alignment with ICL.
+                <p><strong>Question:</strong> Do semantically corresponding image and text features share the same feature vector direction in the joint embedding space of CLIP-style multi-modal models?</p>
+                <p><strong>Answer:</strong> Semantically corresponding image and text features <strong>can have different feature vector directions</strong>. The proposed method trains separate sparse autoencoders on image and text embeddings, then <strong>aligns corresponding latent coordinates</strong> using activation correlations without changing the learned feature vector directions.</p>
             </div>
             <div class="publication-links">
-                <a class="primary" href="https://arxiv.org/abs/2605.20730" target="_blank" rel="noopener noreferrer">View PDF</a>
+                <a class="primary" href="https://arxiv.org/abs/2606.29888" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="secondary" href="https://github.com/JiH00nKw0n/cross_modal_feature_heterogeneity" target="_blank" rel="noopener noreferrer">Code</a>
             </div>
         </div>
 
-        <div class="publication-item">
+        <div class="publication-item" id="task-vectors">
             <div class="publication-header">
-                <div class="publication-title">LLM as a Risk Manager: LLM Semantic Filtering for Lead&ndash;Lag Trading in Prediction Markets</div>
-                <span class="venue-badge">ACL 2026 Industry Track<span class="oral-tag">Oral</span></span>
+                <h3 class="publication-title">Distributional Alignment as a Criterion for Designing Task Vectors in In-Context Learning</h3>
+                <span class="venue-badge">NeurIPS 2026</span>
             </div>
-            <div class="publication-authors">Sumin Kim, Minjae Kim, <strong>Jihoon Kwon</strong>, Yoon Kim, Oscar Levy, Alejandro Lopez-Lira, Yongjae Lee, Chanyeol Choi</div>
-            <div class="publication-venue">ACL 2026 Industry Track (Oral)</div>
+            <div class="publication-authors"><strong>Jihoon Kwon<sup>*</sup></strong>, Jiwon Choi<sup>*</sup>, Jy-yong Sohn</div>
+            <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
             <div class="publication-abstract">
-                In this paper, we show that LLMs can serve as effective semantic risk managers for lead&ndash;lag trading in prediction markets, demonstrating that language models can identify and screen out spurious co-movements to improve trading signals.
+                <p><strong>Question:</strong> How can we evaluate and design task vectors that encode task-relevant information from <em>in-context learning</em>?</p>
+                <p><strong>Answer:</strong> The proposed metric <strong>measures the discrepancy between next-token probability distributions</strong> over task labels under task-vector inference and <em>in-context learning</em>. Lower discrepancy correlates with higher classification accuracy. Guided by the proposed metric, Linear Task Vector estimates task vectors through <strong>linear regression</strong> on the difference between the last input token's final-layer hidden states with and without demonstrations.</p>
             </div>
             <div class="publication-links">
-                <a class="primary" href="https://openreview.net/forum?id=eSWDnWIweI#discussion" target="_blank" rel="noopener noreferrer">OpenReview</a>
+                <a class="primary" href="https://arxiv.org/abs/2605.20730" target="_blank" rel="noopener noreferrer">Paper</a>
+                <a class="secondary" href="https://github.com/JiH00nKw0n/LTV" target="_blank" rel="noopener noreferrer">Code</a>
             </div>
         </div>
 
@@ -542,9 +626,10 @@
                 <span class="venue-badge">NeurIPS 2025</span>
             </div>
             <div class="publication-authors"><strong>Jihoon Kwon</strong>, Kyle Min, Jy-yong Sohn</div>
-            <div class="publication-venue">NeurIPS 2025 Poster</div>
+            <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2025)</div>
             <div class="publication-abstract">
-                In this paper, we propose READ-CLIP, a fine-tuning method that improves compositional reasoning in vision-language models via reconstruction and alignment losses.
+                <p><strong>Question:</strong> How can CLIP's text encoder better capture relationships between words to improve compositional reasoning?</p>
+                <p><strong>Answer:</strong> The proposed READ method supplements contrastive fine-tuning with <strong>reconstruction of paraphrased captions</strong> from original caption embeddings through a frozen decoder, plus <strong>alignment between original and paraphrased caption embeddings</strong>. Applying READ to CLIP yields READ-CLIP and improves compositional reasoning across five benchmarks.</p>
             </div>
             <div class="publication-links">
                 <a class="primary" href="https://neurips.cc/virtual/2025/poster/119758" target="_blank" rel="noopener noreferrer">Paper</a>
@@ -552,32 +637,27 @@
             </div>
         </div>
 
-        <div class="publication-item">
-            <div class="publication-header">
-                <div class="publication-title">Thematic Scoring: Quantifying Contextual Narratives using Language Models</div>
-            </div>
-            <div class="publication-authors">Alejandro Lopez-Lira, Chanyeol Choi, Yoon Kim, <strong>Jihoon Kwon</strong>, Jin Kim, Suyeol Yun</div>
-            <div class="publication-venue">SSRN 5233994</div>
-            <div class="publication-links">
-                <a class="primary" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5233994" target="_blank" rel="noopener noreferrer">Paper</a>
-            </div>
-        </div>
-
-        <div class="publication-item">
-            <div class="publication-header">
-                <div class="publication-title">Linq-Embed-Mistral Technical Report</div>
-            </div>
-            <div class="publication-authors">Chanyeol Choi, Junseong Kim, Seolhwa Lee, <strong>Jihoon Kwon</strong>, Sangmo Gu, Yejin Kim, Minkyung Cho, Jy-yong Sohn</div>
-            <div class="publication-venue">arXiv:2412.03223</div>
-            <div class="publication-links">
-                <a class="primary" href="https://arxiv.org/abs/2412.03223" target="_blank" rel="noopener noreferrer">Paper</a>
-                <a class="secondary" href="https://huggingface.co/Linq-AI-Research/Linq-Embed-Mistral" target="_blank" rel="noopener noreferrer">Model</a>
-            </div>
-        </div>
+        <p class="contribution-note">* Equal Contribution</p>
+        <p class="publications-note">For my other papers, including work at ACL and EMNLP, see my <a href="https://scholar.google.com/citations?user=AFBlcwsAAAAJ&amp;hl=ko" target="_blank" rel="noopener noreferrer">Google Scholar</a>.</p>
     </section>
 
     <section id="education">
         <h2>Education</h2>
+        <div class="timeline-item">
+            <img src="assets/snu.svg" alt="Seoul National University" class="timeline-logo">
+            <div class="item-header">
+                <div>
+                    <div class="item-title">M.S. in Artificial Intelligence</div>
+                    <div class="item-institution">Seoul National University, Republic of Korea</div>
+                </div>
+                <div class="item-date">2026/09 &ndash; Present</div>
+            </div>
+            <div class="item-description">
+                <a href="https://gsai.snu.ac.kr/en/" target="_blank" rel="noopener noreferrer">Interdisciplinary Program in Artificial Intelligence (IPAI)</a><br>
+                Advised by <a href="https://sites.google.com/view/jydo/home" target="_blank" rel="noopener noreferrer">Prof. Jaeyoung Do</a> in the <a href="https://aidas.snu.ac.kr/" target="_blank" rel="noopener noreferrer">AIDAS Lab</a>.
+            </div>
+        </div>
+
         <div class="timeline-item">
             <img src="assets/snu.svg" alt="Seoul National University" class="timeline-logo">
             <div class="item-header">
@@ -600,16 +680,16 @@
             <img src="assets/linqalpha.svg" alt="LinqAlpha" class="timeline-logo">
             <div class="item-header">
                 <div>
-                    <div class="item-title">Fundamental Research Engineer - AI/LLM</div>
+                    <div class="item-title">Principal AI Researcher</div>
                     <div class="item-company">LinqAlpha</div>
                 </div>
-                <div class="item-date">2023/09 - Present</div>
+                <div class="item-date">2023/09 &ndash; 2026/08</div>
             </div>
             <div class="item-description">
                 <ul>
-                    <li>Developing a GUI-based Vision-Language-Action agent to automatically enter, record, and transcribe earnings and conference calls.</li>
-                    <li>Owning research and critical experiments for finance-focused LLM applications.</li>
-                    <li>Building an end-to-end benchmark pipeline for training and evaluating finance-specific LLM systems.</li>
+                    <li>Developed methods for tracking evolving signals in corporate disclosures with language models, reported in <a href="https://arxiv.org/abs/2510.03195" target="_blank" rel="noopener noreferrer">From Text to Alpha</a> (EMNLP 2026, Industry Track).</li>
+                    <li>Co-developed methods that use language models to filter misleading trading signals in prediction markets, reported in <a href="https://openreview.net/forum?id=eSWDnWIweI#discussion" target="_blank" rel="noopener noreferrer">LLM as a Risk Manager</a> (ACL 2026, Industry Track, Oral).</li>
+                    <li>Co-developed <a href="https://icaif25.org/accepted-papers/" target="_blank" rel="noopener noreferrer">FinAgentBench and FinDER</a>, datasets for evaluating financial information retrieval and question answering (ACM ICAIF 2025).</li>
                 </ul>
             </div>
         </div>
@@ -621,14 +701,13 @@
                     <div class="item-title">Research Intern</div>
                     <div class="item-company">ITML Lab, Yonsei University</div>
                 </div>
-                <div class="item-date">2024/07 - Present</div>
+                <div class="item-date">2024/07 &ndash; 2026/08</div>
             </div>
             <div class="item-description">
                 <ul>
-                    <li>Proposed READ-CLIP, a fine-tuning method for compositional reasoning in vision-language models (NeurIPS 2025).</li>
-                    <li>Proposed dNTP, a principled metric for evaluating in-context learning task vectors, and LTV, a training-free method for better performing, low-latency test-time inference.</li>
-                    <li>Researching training methodologies that promote monosemantic feature learning when interpreting vision-language models with sparse autoencoders.</li>
-                    <li>Researching efficient Monte Carlo Tree Search-based test-time scaling for autoregressive LLMs using diffusion-LLM hybrid approaches.</li>
+                    <li>Proposed READ, a fine-tuning method for improving compositional reasoning in vision-language models, and applied READ to CLIP to obtain READ-CLIP (NeurIPS 2025).</li>
+                    <li>Co-developed Linear Task Vector, which uses linear regression to estimate the demonstration-induced change in the last token's final-layer hidden state (NeurIPS 2026, co-first author).</li>
+                    <li>Co-developed a method to extract and match semantically corresponding image and text features while preserving modality-specific feature vector directions (NeurIPS 2026, co-first author).</li>
                 </ul>
             </div>
         </div>
