@@ -10,20 +10,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
-            --mit-red: #750014;
-            --mit-bright-red: #ff1423;
-            --mit-black: #000000;
-            --mit-silver-gray: #8b959e;
-            --mit-dark-gray: #212326;
-            --mit-medium-gray: #626a73;
-            --mit-light-gray: #c2c0bf;
-            --mit-blue: #002896;
-            --bg: #f6f7f8;
-            --panel: #ffffff;
-            --line: #d9dde2;
-            --text: #202326;
-            --subtext: #4f5660;
-            --shadow: 0 18px 40px rgba(0, 0, 0, 0.07);
+            --accent: #003262;
+            --accent-hover: #00264d;
+            --heading: #17364e;
+            --muted: #526574;
+            --soft-border: #b8cad7;
+            --focus: #2674b2;
+            --bg: #dce8ed;
+            --panel: rgba(255, 255, 255, 0.95);
+            --line: #d5e0e8;
+            --text: #243746;
+            --subtext: #4b5e6d;
+            --shadow: 0 18px 44px rgba(0, 25, 48, 0.16);
         }
 
         * {
@@ -42,24 +40,47 @@
         }
 
         a:focus-visible {
-            outline: 3px solid var(--mit-blue);
+            outline: 3px solid var(--focus);
             outline-offset: 4px;
         }
 
         body {
+            position: relative;
+            isolation: isolate;
+            min-height: 100vh;
             font-family: "Space Grotesk", "Noto Sans KR", "Helvetica Neue", sans-serif;
             color: var(--text);
-            background:
-                radial-gradient(circle at 12% 0%, rgba(139, 149, 158, 0.22), transparent 38%),
-                radial-gradient(circle at 90% 12%, rgba(117, 0, 20, 0.06), transparent 44%),
-                linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+            background: var(--accent);
             line-height: 1.65;
+        }
+
+        .coastal-backdrop {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .coastal-backdrop img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .coastal-backdrop::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 50, 98, 0.02) 0%, rgba(0, 35, 65, 0.08) 55%, rgba(0, 25, 48, 0.28) 100%);
         }
 
         .page {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 28px 20px 56px;
+            padding: 32px 20px 56px;
         }
 
         .top-nav {
@@ -71,46 +92,48 @@
 
         .top-nav a {
             text-decoration: none;
-            color: var(--mit-dark-gray);
+            color: var(--accent);
             font-size: 0.88rem;
             font-weight: 600;
             letter-spacing: 0.02em;
-            border: 1px solid var(--line);
-            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.97);
             padding: 7px 12px;
             border-radius: 999px;
             transition: all 0.2s ease;
         }
 
         .top-nav a.nav-publications {
-            color: var(--mit-red);
-            border-color: var(--line);
-            background: rgba(255, 255, 255, 0.8);
+            color: var(--accent);
+            border-color: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.97);
         }
 
         .top-nav a.nav-news {
-            color: var(--mit-red);
-            border-color: rgba(117, 0, 20, 0.3);
-            background: rgba(117, 0, 20, 0.05);
+            color: #ffffff;
+            border-color: var(--accent);
+            background: var(--accent);
         }
 
         .top-nav a:hover {
-            border-color: var(--mit-black);
-            color: var(--mit-black);
-            background: rgba(139, 149, 158, 0.15);
+            border-color: #ffffff;
+            color: var(--accent);
+            background: #e7f0f7;
             transform: translateY(-1px);
+        }
+
+        .content-panel {
+            background: var(--panel);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--shadow);
         }
 
         .hero {
             display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 28px;
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(242, 244, 246, 0.92));
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: var(--shadow);
-            margin-bottom: 26px;
+            grid-template-columns: 176px minmax(0, 1fr);
+            gap: 22px;
         }
 
         .hero-left {
@@ -121,43 +144,42 @@
         }
 
         .profile-img {
-            width: 180px;
-            height: 180px;
+            width: 156px;
+            height: 156px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid #fff;
             box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
 
         h1 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-size: clamp(1.85rem, 3.6vw, 2.4rem);
             line-height: 1.1;
             margin-bottom: 8px;
-            color: var(--mit-dark-gray);
+            color: var(--accent);
         }
 
         .quote {
             margin-top: 8px;
             margin-bottom: 14px;
-            color: var(--mit-medium-gray);
+            color: var(--muted);
             font-size: 0.95rem;
-            max-width: 520px;
         }
 
         .contact-info {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         .contact-info a {
-            width: 42px;
-            height: 42px;
+            width: 36px;
+            height: 36px;
             border: 1px solid var(--line);
-            border-radius: 12px;
+            border-radius: 10px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -166,14 +188,14 @@
         }
 
         .contact-info a:hover {
-            border-color: var(--mit-silver-gray);
+            border-color: var(--soft-border);
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(33, 35, 38, 0.15);
         }
 
         .iico {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
         }
 
         .hero-right p {
@@ -188,49 +210,44 @@
         .hero-right a,
         .item-description a,
         .item-institution a {
-            color: var(--mit-red);
+            color: var(--accent);
             text-decoration-thickness: 1px;
             text-underline-offset: 3px;
         }
 
         section {
-            background: var(--panel);
-            border: 1px solid var(--line);
-            border-radius: 18px;
-            padding: 24px;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+            margin-top: 40px;
         }
 
         h2 {
             font-size: 1.35rem;
-            color: var(--mit-black);
+            color: var(--accent);
             margin-bottom: 18px;
             padding-bottom: 8px;
-            border-bottom: 2px solid rgba(139, 149, 158, 0.45);
+            border-bottom: 2px solid var(--line);
         }
 
         #publications h2 {
-            color: var(--mit-red);
+            color: var(--accent);
         }
 
         .news-item {
             display: grid;
             grid-template-columns: 130px minmax(0, 1fr);
             gap: 20px;
-            border-left: 3px solid var(--mit-red);
+            border-left: 3px solid var(--accent);
             padding-left: 18px;
         }
 
         .news-date {
-            color: var(--mit-red);
+            color: var(--accent);
             font-size: 0.9rem;
             font-weight: 600;
             padding-top: 3px;
         }
 
         .news-title {
-            color: var(--mit-dark-gray);
+            color: var(--heading);
             font-size: 1.1rem;
             line-height: 1.5;
             margin-bottom: 4px;
@@ -248,7 +265,7 @@
         }
 
         .news-papers a {
-            color: var(--mit-red);
+            color: var(--accent);
             font-size: 0.9rem;
             text-underline-offset: 3px;
         }
@@ -262,46 +279,31 @@
             margin-bottom: 0;
         }
 
-        .publication-item {
-            border: 1px solid rgba(139, 149, 158, 0.35);
-            border-radius: 14px;
-            padding: 16px;
-            margin-bottom: 12px;
-            background: linear-gradient(145deg, #ffffff, #f8fafb);
-        }
-
-        .publication-item:last-child {
-            margin-bottom: 0;
+        .publication-item + .publication-item {
+            border-top: 1px solid var(--line);
+            padding-top: 24px;
+            margin-top: 24px;
         }
 
         .publication-header {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            align-items: flex-start;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 16px;
+            align-items: start;
             margin-bottom: 8px;
         }
 
         .publication-title {
             font-size: 1.06rem;
             font-weight: 700;
-            color: var(--mit-dark-gray);
-            flex: 1 1 580px;
+            color: var(--heading);
+            min-width: 0;
         }
 
-        .venue-badge {
-            display: inline-block;
-            font-size: 0.74rem;
-            letter-spacing: 0.03em;
-            font-weight: 700;
-            text-transform: none;
-            border-radius: 999px;
-            padding: 4px 10px;
-            background: rgba(117, 0, 20, 0.1);
-            color: var(--mit-red);
-            border: 1px solid rgba(117, 0, 20, 0.3);
-            white-space: nowrap;
+        .venue-logo {
+            display: block;
+            width: 108px;
+            height: auto;
         }
 
         .publication-authors {
@@ -310,7 +312,7 @@
         }
 
         .publication-venue {
-            color: var(--mit-red);
+            color: var(--accent);
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 8px;
@@ -334,7 +336,7 @@
         }
 
         .publications-note a {
-            color: var(--mit-red);
+            color: var(--accent);
             text-underline-offset: 3px;
         }
 
@@ -355,15 +357,15 @@
         }
 
         .publication-links a.primary {
-            background: var(--mit-red);
+            background: var(--accent);
             color: #fff;
-            border-color: var(--mit-red);
+            border-color: var(--accent);
         }
 
         .publication-links a.secondary {
-            color: var(--mit-dark-gray);
-            border-color: var(--mit-silver-gray);
-            background: rgba(139, 149, 158, 0.12);
+            color: var(--accent);
+            border-color: var(--soft-border);
+            background: #edf3f8;
         }
 
         .publication-links a:hover {
@@ -372,20 +374,20 @@
         }
 
         .publication-links a.primary:hover {
-            background: #5f0010;
+            background: var(--accent-hover);
         }
 
         #publications .publication-links a,
         #publications .publication-links a.primary,
         #publications .publication-links a.secondary {
-            background: var(--mit-red);
-            border-color: var(--mit-red);
+            background: var(--accent);
+            border-color: var(--accent);
             color: #ffffff;
         }
 
         #publications .publication-links a:hover {
-            background: #5f0010;
-            border-color: #5f0010;
+            background: var(--accent-hover);
+            border-color: var(--accent-hover);
         }
 
         .timeline-item {
@@ -426,18 +428,18 @@
 
         .item-title {
             font-weight: 700;
-            color: var(--mit-dark-gray);
+            color: var(--heading);
         }
 
         .item-institution,
         .item-company {
-            color: var(--mit-medium-gray);
+            color: var(--muted);
             font-weight: 500;
         }
 
         .item-date {
             font-size: 0.88rem;
-            color: var(--mit-medium-gray);
+            color: var(--muted);
             white-space: nowrap;
         }
 
@@ -454,17 +456,13 @@
             margin-bottom: 4px;
         }
 
-        footer {
-            text-align: center;
-            color: var(--mit-medium-gray);
-            font-size: 0.9rem;
-            padding-top: 8px;
-        }
-
         @media (max-width: 900px) {
+            .content-panel {
+                padding: 22px;
+            }
+
             .hero {
                 grid-template-columns: 1fr;
-                padding: 22px;
                 gap: 20px;
             }
 
@@ -483,9 +481,13 @@
                 padding: 20px 12px 40px;
             }
 
-            section {
+            .content-panel {
                 padding: 18px;
-                border-radius: 14px;
+                border-radius: 18px;
+            }
+
+            section {
+                margin-top: 32px;
             }
 
             .timeline-item {
@@ -503,6 +505,14 @@
                 padding-left: 14px;
             }
 
+            .publication-header {
+                gap: 12px;
+            }
+
+            .venue-logo {
+                width: 76px;
+            }
+
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -517,6 +527,11 @@
     </style>
 </head>
 <body>
+<div class="coastal-backdrop" aria-hidden="true">
+    <img src="assets/coast-sunset-1920.webp"
+         srcset="assets/coast-sunset-1280.webp 1280w, assets/coast-sunset-1920.webp 1920w, assets/coast-sunset-3840.webp 3840w, assets/coast-sunset-5946.webp 5946w"
+         sizes="(max-aspect-ratio: 3/2) 150vh, 100vw" width="5946" height="3964" alt="" fetchpriority="high" decoding="async">
+</div>
 <div class="page">
     <nav class="top-nav" aria-label="Main navigation">
         <a href="#news" class="nav-news">News</a>
@@ -527,6 +542,7 @@
         <a href="#projects">Projects</a>
     </nav>
 
+    <main class="content-panel">
     <header class="hero">
         <div class="hero-left">
             <img src="assets/profile.jpeg" alt="Jihoon Kwon" class="profile-img">
@@ -589,7 +605,7 @@
         <div class="publication-item" id="same-concept">
             <div class="publication-header">
                 <h3 class="publication-title">Same Concept, Different Directions: Cross-Modal Feature Heterogeneity in Sparse Autoencoders</h3>
-                <span class="venue-badge">NeurIPS 2026</span>
+                <img class="venue-logo" src="assets/neurips.svg" alt="NeurIPS" width="108" height="49">
             </div>
             <div class="publication-authors">Chungpa Lee<sup>*</sup>, <strong>Jihoon Kwon<sup>*</sup></strong>, Kyle Min, Jy-yong Sohn</div>
             <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
@@ -606,7 +622,7 @@
         <div class="publication-item" id="task-vectors">
             <div class="publication-header">
                 <h3 class="publication-title">Distributional Alignment as a Criterion for Designing Task Vectors in In-Context Learning</h3>
-                <span class="venue-badge">NeurIPS 2026</span>
+                <img class="venue-logo" src="assets/neurips.svg" alt="NeurIPS" width="108" height="49">
             </div>
             <div class="publication-authors"><strong>Jihoon Kwon<sup>*</sup></strong>, Jiwon Choi<sup>*</sup>, Jy-yong Sohn</div>
             <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
@@ -623,7 +639,7 @@
         <div class="publication-item">
             <div class="publication-header">
                 <div class="publication-title">Enhancing Compositional Reasoning in CLIP via Reconstruction and Alignment of Text Descriptions</div>
-                <span class="venue-badge">NeurIPS 2025</span>
+                <img class="venue-logo" src="assets/neurips.svg" alt="NeurIPS" width="108" height="49">
             </div>
             <div class="publication-authors"><strong>Jihoon Kwon</strong>, Kyle Min, Jy-yong Sohn</div>
             <div class="publication-venue">Conference on Neural Information Processing Systems (NeurIPS 2025)</div>
@@ -758,10 +774,7 @@
             </div>
         </div>
     </section>
-
-    <footer>
-        <p>&copy; 2026 Jihoon Kwon. All rights reserved.</p>
-    </footer>
+    </main>
 </div>
 </body>
 </html>
